@@ -8,8 +8,8 @@ export const withTag = (tag = 'span', props = {}) => ({ item, index, last }) => 
   })
 }
 
-export const withSeparator = (separator = ',') => ({ item, last }) => {
-  return `${item}${ !last ? `${separator} ` : '' }`
+export const withSeparator = (separator = ', ') => ({ item, last }) => {
+  return `${item}${ !last ? separator : '' }`
 }
 
 export const withOxfordComma = (word = 'and') => ({ item, index, last, length }) => {

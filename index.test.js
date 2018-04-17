@@ -54,3 +54,16 @@ test('Create withTag and classname', t => {
     <span className="user">Joe</span>
   </p>), true)
 })
+
+test('Custom separator as separator', t => {
+  const result = shallow(
+    <Knit
+      items={['Joe', 'Jane']}
+      render={withSeparator(' - ')}
+    />
+  )
+
+  t.is(result.contains(<Fragment>
+    Joe - Jane
+  </Fragment>), true)
+})
