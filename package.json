@@ -1,11 +1,11 @@
 {
   "name": "react-knit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./dist/index.js",
   "files": "dist",
   "scripts": {
-    "build": "babel index.js --out-dir=dist",
+    "build": "babel -q index.js --out-dir=dist",
     "test": "ava index.test.js",
     "prepublishOnly": "npm run build"
   },
