@@ -1,4 +1,4 @@
-# react-knit
+# react-knit [![Build Status](https://travis-ci.org/nervetattoo/react-knit.svg?branch=master)](https://travis-ci.org/nervetattoo/react-knit)
 
 > Join arrays of data like a pro in [React](https://reactjs.org)
 
