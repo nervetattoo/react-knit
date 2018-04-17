@@ -6,6 +6,7 @@
   "files": "dist",
   "scripts": {
     "build": "babel index.js --out-dir=dist",
+    "test": "ava index.test.js",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
@@ -16,15 +17,32 @@
     "join",
     "array"
   ],
-  "author": "Raymond Julin <raymond.julin@gmail.com>",
+  "author": {
+    "name": "Raymond Julin",
+    "email": "raymond.julin@gmail.com",
+    "url": "raymondjulin.com"
+  },
   "license": "MIT",
   "devDependencies": {
+    "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
-    "prop-types": "^15.6.1"
+    "babel-register": "^6.26.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-test-renderer": "^16.3.2"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   },
   "babel": {
     "plugins": [

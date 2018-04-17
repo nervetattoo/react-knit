@@ -1,36 +1,54 @@
 import React from 'react'
 import T from 'prop-types'
 
-export function commas ({ item, last, separator }) {
-  return <span>{item}{ !last && separator }</span>
+export const withTag = (tag = 'span', props = {}) => ({ item, index, last }) => {
+  return React.createElement(tag, {
+    ...props,
+    children: item
+  })
 }
 
-export default class ReactStitch extends Component {
+export const withSeparator = (separator = ',') => ({ item, last }) => {
+  return `${item}${ !last ? `${separator} ` : '' }`
+}
+
+export const withOxfordComma = (word = 'and') => ({ item, index, last, length }) => {
+  switch (true) {
+    case last:
+      return item
+    case index === length - 2:
+      return `${item}, ${word} `
+    default:
+      return `${item}, `
+  }
+}
+
+export default class Knit extends React.Component {
   static propTypes = {
-    render: T.func.required,
-    items: T.array.required,
-    separator: T.string,
+    render: T.func.isRequired,
+    items: T.array.isRequired,
   }
 
   static defaultProps = {
     items: [],
-    separator: ', ',
-    render: commas,
+    wrap: React.Fragment,
+    render: withSeparator(),
   }
 
   render () {
-    const { render, items, separator } = this.props
+    const { render, items } = this.props
+    const Wrap = this.props.wrap
     const length = items.length
     return (
-      <React.Fragment>
+      <Wrap>
         {items.map((item, index) => render({
           item,
           index,
-          separator,
+          length,
           last: index + 1 === length,
           first: index === 0,
         }))}
-      </React.Fragment>
+      </Wrap>
     )
   }
 }
